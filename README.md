@@ -4,7 +4,11 @@ It was a bit hard to define the idea at the beginning, but this is essentially o
 many repositories to come, all to build one multi-protocol IoT platform.
 
 ## What the project is
-I aim at building a multi-protocol IoT Platform that anyone can just clone and run.
+I aim at building a multi-protocol IoT Platform with alerts and analytics.
+
+## System Architecture
+<img width="1913" height="922" alt="Screenshot 2025-10-14 062622" src="https://github.com/user-attachments/assets/9838ca89-5ec4-4724-827d-c88987064cdc" />
+
 
 ## Features I aim at building
 ```
@@ -15,4 +19,9 @@ I aim at building a multi-protocol IoT Platform that anyone can just clone and r
 . Custom Commands
 . Reply Scripts
 
+```
+
+# Authors
+```
+1. Sebastian Muchui
 ```
