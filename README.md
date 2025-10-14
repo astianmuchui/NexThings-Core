@@ -1,7 +1,7 @@
 # Foreword
 It was a bit hard to define the idea at the beginning, but this project fundamentally became about
 curiosity, the curiosity to build something different, think different, work something long-term, to see what it takes.
-And thus how we arrived here.
+And thus we arrived here.
 
 # NexThings IoT Core
 
