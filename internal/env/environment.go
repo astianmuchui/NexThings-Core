@@ -73,3 +73,23 @@ func GetDatabaseDSN() (string, error) {
 
 	return dsn, nil
 }
+
+func GetSenderEmail() (string, error) {
+	email := os.Getenv("NEXTHINGS_EMAIL_FROM")
+
+	if email == "" {
+		return "", fmt.Errorf("unable to get Email")
+	}
+
+	return email, nil
+}
+
+func GetAppPassword() (string, error) {
+	app_password := os.Getenv("NEXTHINGS_EMAIL_APP_PASSWORD")
+
+	if app_password == "" {
+		return "", fmt.Errorf("unable to get app password")
+	}
+
+	return app_password, nil
+}
