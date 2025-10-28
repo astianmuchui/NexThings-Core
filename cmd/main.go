@@ -6,6 +6,7 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/log"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/helmet"
 	"github.com/gofiber/fiber/v2/middleware/idempotency"
 	"github.com/gofiber/fiber/v2/middleware/limiter"
@@ -35,6 +36,7 @@ func main() {
 	app.Use(logger.New())
 	app.Use(recover.New())
 	app.Use(helmet.New())
+	app.Use(cors.New())
 
 	/* Minimal Rate Limiting */
 	app.Use(limiter.New(limiter.Config{
