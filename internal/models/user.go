@@ -1,60 +1,90 @@
 package models
 
 import (
-	"time"
+    "time"
 
-	"github.com/google/uuid"
-	"gorm.io/gorm"
+    "github.com/google/uuid"
+    "gorm.io/gorm"
 
-	"github.com/astianmuchui/nexthings-core/internal/db"
-
+    "github.com/astianmuchui/nexthings-core/internal/db"
 )
 
 type User struct {
-	BaseModel
+    BaseModel
 
-	FirstName                      string    `json:"firstname"`
-	LastName                       string    `json:"lastname"`
-	Username                       string    `json:"username" gorm:"uniqueIndex;not null"`
+    Uuid      uuid.UUID `json:"uuid" gorm:"uniqueIndex;not null"`
+    FirstName string    `json:"firstname"`
+    LastName  string    `json:"lastname"`
+    Username  string    `json:"username" gorm:"uniqueIndex;not null"`
+    Password  string    `json:"password" gorm:"not null"`
 
-	Email                          string    `json:"email" gorm:"uniqueIndex;not null"`
-	PhoneNumber                    string    `json:"phone" gorm:"uniqueIndex;not null"`
-	City                           string    `json:"city"`
-	Country                        string    `json:"country"`
+    Email       string `json:"email" gorm:"uniqueIndex;not null"`
+    PhoneNumber string `json:"phone" gorm:"uniqueIndex;not null"`
+    City        string `json:"city"`
+    Country     string `json:"country"`
 
-	EmailVerifiedAt                time.Time `json:"EmailVerifiedAt"`
-	PhoneVerifiedAt                time.Time `json:"PhoneVerifiedAt"`
+    EmailVerifiedAt time.Time `json:"EmailVerifiedAt"`
+    PhoneVerifiedAt time.Time `json:"PhoneVerifiedAt"`
 
-	EmailVerifyToken               uuid.UUID `json:"EmailVerifyToken"`
-	EmailVerificationCode          int32     `json:"EmailVerificationCode"`
-	EmailVerificationCodeExpiresAt time.Time `json:"EmailVerificationCodeExpiresAt"`
+    EmailVerifyToken               uuid.UUID `json:"EmailVerifyToken"`
+    EmailVerificationCode          int32     `json:"EmailVerificationCode"`
+    EmailVerificationCodeExpiresAt time.Time `json:"EmailVerificationCodeExpiresAt"`
+    PasswordResetToken             uuid.UUID `json:"PasswordResetToken"`
+}
+
+type UserResponse struct {
+    BaseModel
+
+    Uuid      uuid.UUID `json:"uuid" gorm:"uniqueIndex;not null"`
+    FirstName string    `json:"firstname"`
+    LastName  string    `json:"lastname"`
+    Username  string    `json:"username" gorm:"uniqueIndex;not null"`
+
+    Email       string `json:"email" gorm:"uniqueIndex;not null"`
+    PhoneNumber string `json:"phone" gorm:"uniqueIndex;not null"`
+    City        string `json:"city"`
+    Country     string `json:"country"`
+}
+
+func (u *User) ToResponse() *UserResponse {
+    return &UserResponse{
+        BaseModel:   u.BaseModel,
+        Uuid:        u.Uuid,
+        FirstName:   u.FirstName,
+        LastName:    u.LastName,
+        Username:    u.Username,
+        Email:       u.Email,
+        PhoneNumber: u.PhoneNumber,
+        City:        u.City,
+        Country:     u.Country,
+    }
 }
 
 func (u *User) BeforeCreate(tx *gorm.DB) error {
-	u.Uuid = uuid.New()
-	return nil
+    u.Uuid = uuid.New()
+    return nil
 }
 
 func (u *User) Create() (err error) {
-	result := db.DB.Create(u)
+    result := db.DB.Create(u)
 
-	return result.Error
+    return result.Error
 }
 
 func (u *User) Update() (err error) {
-	result := db.DB.Save(u)
+    result := db.DB.Save(u)
 
-	return result.Error
+    return result.Error
 }
 
 func (u *User) Retreive() error {
-	result := db.DB.Model(User{}).Where("email = ? or uuid = ? or username = ? or phone_number = ?", u.Email, u.Uuid, u.Username, u.PhoneNumber).First(&u)
+    result := db.DB.Model(User{}).Where("email = ? or uuid = ? or username = ? or phone_number = ?", u.Email, u.Uuid, u.Username, u.PhoneNumber).First(&u)
 
-	return result.Error
+    return result.Error
 }
 
 func (u *User) Delete() error {
-	result := db.DB.Delete(u)
+    result := db.DB.Delete(u)
 
-	return result.Error
+    return result.Error
 }
