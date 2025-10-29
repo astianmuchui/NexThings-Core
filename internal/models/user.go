@@ -12,11 +12,10 @@ import (
 type User struct {
     BaseModel
 
-    Uuid      uuid.UUID `json:"uuid" gorm:"uniqueIndex;not null"`
-    FirstName string    `json:"firstname"`
-    LastName  string    `json:"lastname"`
-    Username  string    `json:"username" gorm:"uniqueIndex;not null"`
-    Password  string    `json:"password" gorm:"not null"`
+    FirstName string `json:"firstname"`
+    LastName  string `json:"lastname"`
+    Username  string `json:"username" gorm:"uniqueIndex;not null"`
+    Password  string `json:"password" gorm:"not null"`
 
     Email       string `json:"email" gorm:"uniqueIndex;not null"`
     PhoneNumber string `json:"phone" gorm:"uniqueIndex;not null"`
