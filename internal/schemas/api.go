@@ -18,6 +18,7 @@ type UserRegisterRequest struct {
 
 // User Login Request
 // Will be unmarshaled when logging in the user via api
+
 type UserLoginRequest struct {
     Identifier string `json:"identifier" validate:"required"` // Can be email, username or phone number
     Password   string `json:"password" validate:"required"`
