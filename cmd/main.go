@@ -51,6 +51,7 @@ func main() {
 		Lifetime: 5 * time.Minute,
 	}))
 
+	app.Static("templates", "../internal/templates")
 
 	routes.GetRoutes(app)
 

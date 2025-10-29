@@ -1,12 +1,17 @@
 package mail
 
 import (
+	"bytes"
+	"fmt"
+	"html/template"
+	"path/filepath"
 	"sync"
 
 	"github.com/gofiber/fiber/v2/log"
 	"gopkg.in/gomail.v2"
 
 	"github.com/astianmuchui/nexthings-core/internal/env"
+	"github.com/astianmuchui/nexthings-core/internal/models"
 
 )
 
@@ -18,7 +23,7 @@ func init() {
 
 	SenderEmail, envError = env.GetSenderEmail()
 	if envError != nil {
-		log.Errorf("Unable to load sender email from environment")
+		log.Error("Unable to load sender email from environment")
 	}
 
 	AppPassword, envError = env.GetAppPassword()
@@ -58,15 +63,37 @@ func (e *Email) Send() error {
 
 	d := gomail.NewDialer("smtp.gmail.com", 587, SenderEmail, AppPassword)
 
-	err := make(chan error)
+	send_err := d.DialAndSend(m)
 
-	go func() {
-		send_err := d.DialAndSend(m)
+	if send_err != nil {
+		return send_err
+	}
 
-		if send_err != nil {
-			err <- send_err
-		}
-	}()
+	return nil
+}
 
-	return <-err
+func (e *Email) SendUserVerificationEmail(url string, u *models.User) error {
+	tmplPath := filepath.Join("internal", "templates", "emails", "verify-email.html")
+	tmpl, err := template.ParseFiles(tmplPath)
+
+	if err != nil {
+		log.Infof("failed to parse template: %v", err)
+		return err
+	}
+
+	var body bytes.Buffer
+	data := map[string]interface{}{
+		"User": &u,
+		"Link": fmt.Sprintf("%s/accounts/verify/%s/%s", url, u.Uuid, u.EmailVerifyToken),
+	}
+	if err := tmpl.Execute(&body, data); err != nil {
+		log.Error("failed to execute template: %v", err)
+		return err
+	}
+	e.Body = body.String()
+	e.Subject = fmt.Sprintf("Verify your account, %s", u.FirstName)
+	e.Recepients = []string{u.Email}
+	e.Mu = &sync.Mutex{}
+
+	return e.Send()
 }
