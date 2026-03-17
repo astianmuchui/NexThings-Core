@@ -1,69 +1,75 @@
 package main
 
 import (
-	"fmt"
-	"time"
+    "fmt"
+    "time"
 
-	"github.com/gofiber/fiber/v2"
-	"github.com/gofiber/fiber/v2/log"
-	"github.com/gofiber/fiber/v2/middleware/cors"
-	"github.com/gofiber/fiber/v2/middleware/helmet"
-	"github.com/gofiber/fiber/v2/middleware/idempotency"
-	"github.com/gofiber/fiber/v2/middleware/limiter"
-	"github.com/gofiber/fiber/v2/middleware/logger"
-	"github.com/gofiber/fiber/v2/middleware/recover"
+    "github.com/gofiber/fiber/v2"
+    "github.com/gofiber/fiber/v2/log"
+    "github.com/gofiber/fiber/v2/middleware/cors"
+    "github.com/gofiber/fiber/v2/middleware/helmet"
+    "github.com/gofiber/fiber/v2/middleware/idempotency"
+    "github.com/gofiber/fiber/v2/middleware/limiter"
+    "github.com/gofiber/fiber/v2/middleware/logger"
+    "github.com/gofiber/fiber/v2/middleware/recover"
 
-	"github.com/astianmuchui/nexthings-core/internal/db"
-	"github.com/astianmuchui/nexthings-core/internal/env"
-	"github.com/astianmuchui/nexthings-core/internal/routes"
-	"github.com/astianmuchui/nexthings-core/internal/utils"
-
+    "github.com/astianmuchui/nexthings-core/internal/db"
+    "github.com/astianmuchui/nexthings-core/internal/env"
+    "github.com/astianmuchui/nexthings-core/internal/routes"
+    "github.com/astianmuchui/nexthings-core/internal/utils"
+    "github.com/gofiber/template/html/v2"
 )
 
 func init() {
-	env.Load()
-	db.Connect()
-	utils.RunMigrations()
+    env.Load()
+    db.Connect()
+    utils.RunMigrations()
 }
 
 func main() {
-	var app *fiber.App = fiber.New(fiber.Config{
-		Prefork:      true,
-		ServerHeader: "NexThings",
-		AppName:      "NexThings IoT Core",
-	})
 
-	app.Use(logger.New())
-	app.Use(recover.New())
-	app.Use(helmet.New())
-	app.Use(cors.New())
+    engine := html.New("./internal/templates", ".html")
 
-	/* Minimal Rate Limiting */
-	app.Use(limiter.New(limiter.Config{
-		Max:               100,
-		Expiration:        10 * time.Second,
-		LimiterMiddleware: limiter.SlidingWindow{},
-	}))
+    var app *fiber.App = fiber.New(fiber.Config{
+        Prefork:      true,
+        ServerHeader: "NexThings",
+        AppName:      "NexThings IoT Core",
+        Views:        engine,
+    })
 
-	/* Idempotency */
+    app.Static("/assets", "./assets")
 
-	app.Use(idempotency.New(idempotency.Config{
-		Lifetime: 5 * time.Minute,
-	}))
+    app.Use(logger.New())
+    app.Use(recover.New())
+    app.Use(helmet.New())
+    app.Use(cors.New())
 
-	app.Static("templates", "../internal/templates")
+    /* Minimal Rate Limiting */
+    app.Use(limiter.New(limiter.Config{
+        Max:               100,
+        Expiration:        10 * time.Second,
+        LimiterMiddleware: limiter.SlidingWindow{},
+    }))
 
-	routes.GetRoutes(app)
+    /* Idempotency */
 
-	var listenPort int
-	var address string
-	listenPort, err := env.GetHttpListenPort()
+    app.Use(idempotency.New(idempotency.Config{
+        Lifetime: 5 * time.Minute,
+    }))
 
-	if err != nil {
-		log.Error("Could not read HTTP Port from .env, Using default port: %v", env.DEFAULT_PORT)
-	}
+    app.Static("templates", "../internal/templates")
 
-	address = fmt.Sprintf(":%d", listenPort)
+    routes.GetRoutes(app)
 
-	app.Listen(address)
+    var listenPort int
+    var address string
+    listenPort, err := env.GetHttpListenPort()
+
+    if err != nil {
+        log.Error("Could not read HTTP Port from .env, Using default port: %v", env.DEFAULT_PORT)
+    }
+
+    address = fmt.Sprintf(":%d", listenPort)
+
+    app.Listen(address)
 }
