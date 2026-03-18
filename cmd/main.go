@@ -28,7 +28,7 @@ func init() {
 
 func main() {
 
-    engine := html.New("./internal/templates", ".html")
+    engine := html.New("./internal/templates", ".django")
 
     var app *fiber.App = fiber.New(fiber.Config{
         Prefork:      true,

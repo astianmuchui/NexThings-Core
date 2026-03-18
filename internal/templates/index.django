@@ -5,9 +5,10 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>NexThings IoT — Multi-Protocol IoT Platform</title>
-        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="/assets/js/tailwind.js"></script>
         <link rel="stylesheet" href="/assets/css/style.css">
         <script src="/assets/js/main.js"></script>
+
         <meta name="description" content="NexThings IoT - A modular, multi-protocol IoT platform supporting MQTT, WebSocket, LoRa, CoAP, and OPC-UA. Real-time data streaming, device management, and analytics dashboards.">
         <meta name="keywords" content="IoT platform, MQTT broker, IoT gateway, device management, real-time streaming, Kafka, LoRa, CoAP, WebSocket, OPC-UA, IoT infrastructure, edge computing, telemetry, open source IoT">
         <meta name="author" content="Sebastian Muchui">
@@ -16,8 +17,7 @@
         <meta property="og:type" content="website">
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:title" content="NexThings IoT — Multi-Protocol IoT Platform">
-        <meta name="twitter:description" content="Open source IoT platform for MQTT, LoRa, CoAP, WebSocket, and OPC-UA device integration.">
-
+        <meta name="twitter:description" content="Open source IoT platform for MQTT, LoRa, CoAP, WebSocket, and OPC-UA device integration">
         <link
             href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
             rel="stylesheet">
@@ -80,8 +80,7 @@
                     <div
                         class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-500/20 bg-blue-500/5 mb-8">
                         <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-                        <span class="font-mono text-xs text-blue-300 tracking-wider uppercase">Open Source &middot; MIT
-                            Licensed</span>
+                        <span class="font-mono text-xs text-blue-300 tracking-wider uppercase">Coming Soon</span>
                     </div>
                 </div>
 
