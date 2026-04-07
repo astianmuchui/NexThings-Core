@@ -56,6 +56,8 @@
                         class="text-nex-100/60 hover:text-white transition-colors duration-300">Features</a>
                     <a href="#architecture"
                         class="text-nex-100/60 hover:text-white transition-colors duration-300">Architecture</a>
+                    <a href="/docs/index.html"
+                        class="text-nex-100/60 hover:text-white transition-colors duration-300">API Docs</a>
                     <a href="https://github.com/astianmuchui/Nexthings-IoT" target="_blank"
                         class="flex items-center gap-2 px-4 py-2 rounded-lg border border-blue-500/30 text-blue-300 hover:bg-blue-500/10 hover:border-blue-400/50 transition-all duration-300">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -107,6 +109,10 @@
                             </svg>
                             View on GitHub
                         </span>
+                    </a>
+                    <a href="/docs/index.html"
+                        class="font-display font-medium px-8 py-3.5 rounded-xl text-base text-cyan-300 border border-cyan-500/25 hover:bg-cyan-500/10 hover:border-cyan-400/40 transition-all duration-300">
+                        API Docs &rarr;
                     </a>
                     <a href="https://astianmuchui.medium.com/project-nexthings-iot-a-high-level-intro-to-my-next-big-project-0ab5c2babcc1"
                         target="_blank"
@@ -305,14 +311,7 @@
 
                     <div class="glow-card p-5 flex flex-col items-center gap-3 stagger-in" style="animation-delay:0.1s">
                         <div class="w-10 h-10 flex items-center justify-center">
-                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                                <path
-                                    d="M16 2.6l1.1 2.2.3.1 2.4-.4.7 1-1.3 2 .2.3 2.1 1.2.2 1.2-2 1.3v.3l1.5 1.9-.3 1.2-2.4.5-.1.3.7 2.3-.8 1-2.2-.9-.2.2-.2 2.4-1.2.5-1.5-1.8h-.3l-1.5 1.8-1.2-.5-.2-2.4-.2-.2-2.2.9-.8-1 .7-2.3-.1-.3-2.4-.5-.3-1.2 1.5-1.9v-.3l-2-1.3.2-1.2 2.1-1.2.2-.3-1.3-2 .7-1 2.4.4.3-.1L16 2.6z"
-                                    fill="#DEA584" />
-                                <circle cx="16" cy="16" r="7" stroke="#DEA584" stroke-width="1.5" fill="none" />
-                                <path d="M13 14h6M13 16.5h4M13 19h5" stroke="#DEA584" stroke-width="1.2"
-                                    stroke-linecap="round" />
-                            </svg>
+                            <img src="/assets/logos/rust.svg" alt="Rust Logo" class="w-8 h-8 object-contain" loading="lazy" />
                         </div>
                         <span class="text-white font-display font-semibold text-sm">Rust</span>
                         <span class="text-nex-100/30 text-xs">MQTT Core</span>
@@ -321,20 +320,7 @@
                     <div class="glow-card p-5 flex flex-col items-center gap-3 stagger-in"
                         style="animation-delay:0.15s">
                         <div class="w-10 h-10 flex items-center justify-center">
-                            <svg width="34" height="28" viewBox="0 0 120 100" fill="none">
-                                <path
-                                    d="M17 55c-.3 0-.4-.2-.2-.4l1.6-2c.2-.2.5-.4.8-.4h27c.3 0 .4.2.2.5l-1.3 2c-.2.2-.5.5-.8.5L17 55z"
-                                    fill="#00ACD7" />
-                                <path
-                                    d="M5.4 62c-.3 0-.4-.2-.2-.4l1.6-2c.2-.2.5-.4.8-.4h34.5c.3 0 .4.2.3.5l-.6 1.8c0 .3-.3.5-.6.5L5.4 62z"
-                                    fill="#00ACD7" />
-                                <path
-                                    d="M26 69c-.3 0-.4-.2-.2-.5l1.1-1.8c.2-.3.4-.5.8-.5h15.2c.3 0 .4.2.4.5l-.2 1.8c0 .3-.3.5-.5.5L26 69z"
-                                    fill="#00ACD7" />
-                                <path
-                                    d="M75 46c-6.7 1.6-11.3 2.7-17.9 4.3-.8.2-.8.2-1.5-.6-.7-.9-1.3-1.5-2.3-2-3.2-1.5-6.2-1-9 .8-3.3 2.2-5 5.4-4.9 9.2.1 3.7 2.6 6.8 6.3 7.3 3.1.5 5.7-.5 7.8-2.8.4-.5.8-1 1.3-1.6H46.5c-1 0-1.3-.7-1-1.5.7-1.6 1.9-4.2 2.6-5.5.2-.3.6-.8 1.3-.8h21.8c-.1 1.5-.1 3-.4 4.5-.7 3.7-2.2 7-4.6 9.9-3.9 4.7-8.9 7.7-15 8.7-5 .8-9.6-.1-13.7-3.1-3.6-2.7-5.7-6.4-6.2-10.8-.6-5.5 1-10.4 4.3-14.7 3.7-4.8 8.6-7.8 14.4-9.1 4.8-1 9.4-.6 13.5 2.1 2.6 1.7 4.5 4 5.7 6.9.2.3.1.5-.3.6z"
-                                    fill="#00ACD7" />
-                            </svg>
+                            <img src="/assets/logos/go.svg" alt="Go Logo" class="w-8 h-8 object-contain" loading="lazy" />
                         </div>
                         <span class="text-white font-display font-semibold text-sm">Go + Fiber</span>
                         <span class="text-nex-100/30 text-xs">APIs & Auth</span>
@@ -342,13 +328,7 @@
 
                     <div class="glow-card p-5 flex flex-col items-center gap-3 stagger-in" style="animation-delay:0.2s">
                         <div class="w-10 h-10 flex items-center justify-center text-[#336791]">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M17.128 0a10.134 10.134 0 0 0-2.755.403l-.063.02A10.922 10.922 0 0 0 12.6.258C11.422.238 10.41.524 9.594 1 8.79.721 7.122.24 5.364.336 4.14.403 2.804.775 1.814 1.82.827 2.865.305 4.482.415 6.682c.03.607.203 1.597.49 2.879s.69 2.783 1.193 4.18c.503 1.398 1.07 2.627 1.885 3.53.408.451.894.834 1.505.986a1.68 1.68 0 0 0 1.32-.163c.39-.222.689-.549.934-.893l.016-.024c.078.233.148.46.293.697a2.03 2.03 0 0 0 1.38.96c.263.05.5.04.737-.006.473-.091.878-.334 1.271-.59l.006.061c-.004.875-.068 1.652.088 2.57.09.532.323 1.108.782 1.506.46.397 1.096.518 1.742.38a4.444 4.444 0 0 0 2.056-1.168c.612-.627 1.048-1.392 1.384-2.234.34-.853.558-1.776.726-2.763.026-.148.044-.295.067-.44l.257.032c1.044.092 2.11-.075 2.926-.683.816-.608 1.174-1.584 1.174-2.594 0-.753-.204-1.502-.397-2.122l-.063-.193c.126-.012.245-.03.36-.058 1.025-.25 1.742-.975 2.15-1.858.406-.882.575-1.916.575-2.936v-.075a10.13 10.13 0 0 0-.066-.817c-.238-1.768-.913-3.21-2.058-4.24C20.06.607 18.537.039 17.128 0z" />
-                                <path
-                                    d="M17.098.616c1.293.034 2.675.56 3.706 1.5 1.032.94 1.668 2.276 1.891 3.924.036.266.06.544.073.832v.06c0 .96-.162 1.921-.538 2.735-.375.813-.993 1.423-1.834 1.628a2.352 2.352 0 0 1-.418.06l.377 1.163c.199.636.394 1.353.394 2.044 0 .876-.293 1.655-.943 2.14-.65.484-1.55.637-2.5.553l-.623-.055c-.156.926-.358 1.79-.672 2.577-.321.805-.73 1.52-1.286 2.088a3.784 3.784 0 0 1-1.75.998c-.452.097-.863.015-1.156-.238-.292-.254-.472-.679-.546-1.115-.142-.838-.082-1.584-.078-2.466v-.07l-.049.035c-.4.264-.817.5-1.31.595-.188.036-.383.044-.588.003a1.412 1.412 0 0 1-.95-.663 2.618 2.618 0 0 1-.286-.683l-.018.025c-.235.33-.5.614-.83.8a1.054 1.054 0 0 1-.832.1c-.47-.117-.87-.437-1.235-.841-.73-.808-1.29-2.004-1.784-3.376-.496-1.373-.935-2.91-1.217-4.225-.283-1.317-.447-2.244-.472-2.77-.102-2.026.372-3.428 1.198-4.31.826-.882 1.994-1.218 3.103-1.283 1.604-.09 3.212.355 4.076.648.724-.432 1.632-.716 2.702-.697.732.013 1.543.118 2.397.37l.043-.014a9.64 9.64 0 0 1 2.618-.383z"
-                                    fill="#fff" />
-                            </svg>
+                            <img src="/assets/logos/postgresql.svg" alt="PostgreSQL Logo" class="w-8 h-8 object-contain" loading="lazy" />
                         </div>
                         <span class="text-white font-display font-semibold text-sm">PostgreSQL</span>
                         <span class="text-nex-100/30 text-xs">Primary DB</span>
@@ -357,19 +337,7 @@
                     <div class="glow-card p-5 flex flex-col items-center gap-3 stagger-in"
                         style="animation-delay:0.25s">
                         <div class="w-10 h-10 flex items-center justify-center">
-                            <svg width="24" height="28" viewBox="0 0 24 28" fill="none">
-                                <circle cx="12" cy="10" r="3" stroke="#60a5fa" stroke-width="1.5" fill="none" />
-                                <circle cx="6" cy="6" r="2" stroke="#60a5fa" stroke-width="1.2" fill="none" />
-                                <circle cx="18" cy="6" r="2" stroke="#60a5fa" stroke-width="1.2" fill="none" />
-                                <circle cx="6" cy="18" r="2" stroke="#60a5fa" stroke-width="1.2" fill="none" />
-                                <circle cx="18" cy="18" r="2" stroke="#60a5fa" stroke-width="1.2" fill="none" />
-                                <circle cx="12" cy="22" r="2" stroke="#60a5fa" stroke-width="1.2" fill="none" />
-                                <line x1="9.5" y1="8.5" x2="7.5" y2="7.5" stroke="#60a5fa" stroke-width="1" />
-                                <line x1="14.5" y1="8.5" x2="16.5" y2="7.5" stroke="#60a5fa" stroke-width="1" />
-                                <line x1="10" y1="12" x2="7" y2="16.5" stroke="#60a5fa" stroke-width="1" />
-                                <line x1="14" y1="12" x2="17" y2="16.5" stroke="#60a5fa" stroke-width="1" />
-                                <line x1="12" y1="13" x2="12" y2="20" stroke="#60a5fa" stroke-width="1" />
-                            </svg>
+                            <img src="/assets/logos/apache-kafka.svg" alt="Apache Kafka Logo" class="w-8 h-8 object-contain" loading="lazy" />
                         </div>
                         <span class="text-white font-display font-semibold text-sm">Apache Kafka</span>
                         <span class="text-nex-100/30 text-xs">Message Bus</span>
@@ -377,17 +345,7 @@
 
                     <div class="glow-card p-5 flex flex-col items-center gap-3 stagger-in" style="animation-delay:0.3s">
                         <div class="w-10 h-10 flex items-center justify-center">
-                            <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
-                                <path
-                                    d="M30.4 18.4c-2.1 1.1-12.9 5.5-15.2 6.7-2.3 1.2-3.6 1.2-5.4.3C8 24.5 2 21.5 0 20.5v3.4c0 0 7.8 3.9 9.8 4.9 2 1 3.3.9 5.4-.2 2.1-1.2 12.8-5.3 15.2-6.5V18.4z"
-                                    fill="#DC382C" />
-                                <path
-                                    d="M30.4 14c-2.1 1.1-12.9 5.5-15.2 6.7-2.3 1.2-3.6 1.2-5.4.3C8 20.1 2 17.1 0 16.1v3.4c0 0 7.8 3.9 9.8 4.9 2 1 3.3.9 5.4-.2 2.1-1.2 12.8-5.3 15.2-6.5V14z"
-                                    fill="#DC382C" />
-                                <path
-                                    d="M30.4 9.7c-2.1 1.1-12.9 5.5-15.2 6.7-2.3 1.2-3.6 1.2-5.4.3C8 15.8 2 12.8 0 11.8c2-1.1 7.8-3.2 9.8-4.1 2-.9 3.3-.9 5.4.1s12.9 4.9 15.2 5.9-2.1-1.1 0-4z"
-                                    fill="#DC382C" />
-                            </svg>
+                            <img src="/assets/logos/redis.svg" alt="Redis Logo" class="w-8 h-8 object-contain" loading="lazy" />
                         </div>
                         <span class="text-white font-display font-semibold text-sm">Redis</span>
                         <span class="text-nex-100/30 text-xs">Cache & Sessions</span>
@@ -396,12 +354,7 @@
                     <div class="glow-card p-5 flex flex-col items-center gap-3 stagger-in"
                         style="animation-delay:0.35s">
                         <div class="w-10 h-10 flex items-center justify-center">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#a78bfa"
-                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <ellipse cx="12" cy="5" rx="9" ry="3" />
-                                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
-                                <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3" />
-                            </svg>
+                            <img src="/assets/logos/scylladb.svg" alt="ScyllaDB Logo" class="w-8 h-8 object-contain" loading="lazy" />
                         </div>
                         <span class="text-white font-display font-semibold text-sm">ScyllaDB</span>
                         <span class="text-nex-100/30 text-xs">NoSQL / Wide Column</span>
@@ -409,24 +362,7 @@
 
                     <div class="glow-card p-5 flex flex-col items-center gap-3 stagger-in" style="animation-delay:0.4s">
                         <div class="w-10 h-10 flex items-center justify-center">
-                            <svg width="32" height="26" viewBox="0 0 32 26" fill="none">
-                                <rect x="1" y="10" width="5" height="4.5" rx="0.5" stroke="#2496ED" stroke-width="1.3"
-                                    fill="none" />
-                                <rect x="7.5" y="10" width="5" height="4.5" rx="0.5" stroke="#2496ED" stroke-width="1.3"
-                                    fill="none" />
-                                <rect x="14" y="10" width="5" height="4.5" rx="0.5" stroke="#2496ED" stroke-width="1.3"
-                                    fill="none" />
-                                <rect x="7.5" y="4.5" width="5" height="4.5" rx="0.5" stroke="#2496ED"
-                                    stroke-width="1.3" fill="none" />
-                                <rect x="14" y="4.5" width="5" height="4.5" rx="0.5" stroke="#2496ED" stroke-width="1.3"
-                                    fill="none" />
-                                <rect x="20.5" y="10" width="5" height="4.5" rx="0.5" stroke="#2496ED"
-                                    stroke-width="1.3" fill="none" />
-                                <path d="M30 12.5c-1.2-1.5-3.2-1.8-4.5-1.2" stroke="#2496ED" stroke-width="1.3"
-                                    stroke-linecap="round" />
-                                <path d="M2 17c2 4 7 7 14.5 7 8 0 12.5-5 14-9" stroke="#2496ED" stroke-width="1.3"
-                                    stroke-linecap="round" fill="none" />
-                            </svg>
+                            <img src="/assets/logos/docker.svg" alt="Docker Logo" class="w-8 h-8 object-contain" loading="lazy" />
                         </div>
                         <span class="text-white font-display font-semibold text-sm">Docker</span>
                         <span class="text-nex-100/30 text-xs">Containerization</span>
@@ -435,13 +371,7 @@
                     <div class="glow-card p-5 flex flex-col items-center gap-3 stagger-in"
                         style="animation-delay:0.45s">
                         <div class="w-10 h-10 flex items-center justify-center">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#a78bfa"
-                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-                                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                                <circle cx="12" cy="16" r="1.5" fill="#a78bfa" stroke="none" />
-                                <line x1="12" y1="17.5" x2="12" y2="19" />
-                            </svg>
+                            <img src="/assets/logos/jwt.svg" alt="JWT Logo" class="w-8 h-8 object-contain" loading="lazy" />
                         </div>
                         <span class="text-white font-display font-semibold text-sm">JWT + bcrypt</span>
                         <span class="text-nex-100/30 text-xs">Security</span>

@@ -29,3 +29,17 @@ type UserPasswordResetRequest struct {
     Token       uuid.UUID `json:"token" validate:"required"`
     NewPassword string    `json:"newpassword" validate:"required,min=8,max=72"`
 }
+
+type ErrorResponse struct {
+    Error   string `json:"error"`
+    Message string `json:"message,omitempty"`
+}
+
+type MessageResponse struct {
+    Message string `json:"message"`
+}
+
+type LoginRegisterResponse struct {
+    Token string `json:"token"`
+    User  any    `json:"user"`
+}

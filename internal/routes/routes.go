@@ -2,6 +2,7 @@ package routes
 
 import (
     "github.com/gofiber/fiber/v2"
+    swagger "github.com/gofiber/swagger"
 
     "github.com/astianmuchui/nexthings-core/internal/handlers/api"
     "github.com/astianmuchui/nexthings-core/internal/handlers"
@@ -10,6 +11,7 @@ import (
 func GetRoutes(app *fiber.App) {
 
     app.Get("/", handlers.HomeHandler)
+    app.Get("/docs/*", swagger.HandlerDefault)
 
     app.Route("/api/v1", func(v1 fiber.Router) {
 

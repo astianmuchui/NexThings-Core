@@ -12,14 +12,20 @@ import (
     "github.com/gofiber/fiber/v2/middleware/limiter"
     "github.com/gofiber/fiber/v2/middleware/logger"
     "github.com/gofiber/fiber/v2/middleware/recover"
+    "github.com/gofiber/template/html/v2"
 
     "github.com/astianmuchui/nexthings-core/internal/db"
     "github.com/astianmuchui/nexthings-core/internal/env"
     "github.com/astianmuchui/nexthings-core/internal/routes"
     "github.com/astianmuchui/nexthings-core/internal/utils"
-    "github.com/gofiber/template/html/v2"
+    _ "github.com/astianmuchui/nexthings-core/docs"
 )
 
+
+// @title NexThings Core API
+// @version 1.0
+// @description NexThings user authentication and device registry API.
+// @BasePath /
 func init() {
     env.Load()
     db.Connect()

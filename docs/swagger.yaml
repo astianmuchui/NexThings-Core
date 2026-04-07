@@ -1,0 +1,237 @@
+basePath: /
+definitions:
+  schemas.ErrorResponse:
+    properties:
+      error:
+        type: string
+      message:
+        type: string
+    type: object
+  schemas.LoginRegisterResponse:
+    properties:
+      token:
+        type: string
+      user: {}
+    type: object
+  schemas.MessageResponse:
+    properties:
+      message:
+        type: string
+    type: object
+  schemas.UserLoginRequest:
+    properties:
+      identifier:
+        description: Can be email, username or phone number
+        type: string
+      password:
+        type: string
+    required:
+    - identifier
+    - password
+    type: object
+  schemas.UserPasswordResetRequest:
+    properties:
+      newpassword:
+        maxLength: 72
+        minLength: 8
+        type: string
+      token:
+        type: string
+      uid:
+        type: string
+    required:
+    - newpassword
+    - token
+    - uid
+    type: object
+  schemas.UserRegisterRequest:
+    properties:
+      city:
+        maxLength: 85
+        minLength: 2
+        type: string
+      country:
+        maxLength: 56
+        minLength: 2
+        type: string
+      email:
+        maxLength: 254
+        type: string
+      firstname:
+        maxLength: 50
+        minLength: 1
+        type: string
+      lastname:
+        maxLength: 50
+        minLength: 1
+        type: string
+      password:
+        maxLength: 72
+        minLength: 8
+        type: string
+      phonenumber:
+        type: string
+      username:
+        maxLength: 30
+        minLength: 3
+        type: string
+    required:
+    - city
+    - country
+    - email
+    - firstname
+    - lastname
+    - password
+    - phonenumber
+    - username
+    type: object
+info:
+  contact: {}
+  description: NexThings user authentication and device registry API.
+  title: NexThings Core API
+  version: "1.0"
+paths:
+  /api/v1/users/login:
+    post:
+      consumes:
+      - application/json
+      description: Authenticates by email, username, or phone number and returns a
+        JWT token.
+      parameters:
+      - description: Login payload
+        in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/schemas.UserLoginRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/schemas.LoginRegisterResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/schemas.ErrorResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/schemas.ErrorResponse'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/schemas.ErrorResponse'
+      summary: Login user
+      tags:
+      - users
+  /api/v1/users/register:
+    post:
+      consumes:
+      - application/json
+      description: Registers a new user and returns a JWT token.
+      parameters:
+      - description: Registration payload
+        in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/schemas.UserRegisterRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/schemas.LoginRegisterResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/schemas.ErrorResponse'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/schemas.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/schemas.ErrorResponse'
+      summary: Register user
+      tags:
+      - users
+  /api/v1/users/reset-password/:
+    patch:
+      consumes:
+      - application/json
+      description: Resets password using user id and password reset token.
+      parameters:
+      - description: Password reset payload
+        in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/schemas.UserPasswordResetRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/schemas.MessageResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/schemas.ErrorResponse'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/schemas.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/schemas.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/schemas.ErrorResponse'
+      summary: Reset password
+      tags:
+      - users
+  /api/v1/users/verify-account/{uid}/{token}:
+    get:
+      description: Verifies a user's email using verification token.
+      parameters:
+      - description: User UUID
+        in: path
+        name: uid
+        required: true
+        type: string
+      - description: Verification token UUID
+        in: path
+        name: token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/schemas.MessageResponse'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/schemas.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/schemas.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/schemas.ErrorResponse'
+      summary: Verify account
+      tags:
+      - users
+swagger: "2.0"

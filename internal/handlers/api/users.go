@@ -1,6 +1,8 @@
 package api
 
 import (
+    "time"
+
     "github.com/gofiber/fiber/v2"
     "github.com/google/uuid"
 
@@ -9,9 +11,20 @@ import (
     "github.com/astianmuchui/nexthings-core/internal/services/mail"
     "github.com/astianmuchui/nexthings-core/internal/utils"
     "github.com/astianmuchui/nexthings-core/internal/db"
-    "time"
 )
 
+// UserApiRegisterHandler registers a user.
+// @Summary Register user
+// @Description Registers a new user and returns a JWT token.
+// @Tags users
+// @Accept json
+// @Produce json
+// @Param payload body schemas.UserRegisterRequest true "Registration payload"
+// @Success 201 {object} schemas.LoginRegisterResponse
+// @Failure 400 {object} schemas.ErrorResponse
+// @Failure 409 {object} schemas.ErrorResponse
+// @Failure 500 {object} schemas.ErrorResponse
+// @Router /api/v1/users/register [post]
 func UserApiRegisterHandler(c *fiber.Ctx) error {
 
     var payload schemas.UserRegisterRequest
@@ -69,6 +82,18 @@ func UserApiRegisterHandler(c *fiber.Ctx) error {
     })
 }
 
+// UserApiLoginHandler logs in a user.
+// @Summary Login user
+// @Description Authenticates by email, username, or phone number and returns a JWT token.
+// @Tags users
+// @Accept json
+// @Produce json
+// @Param payload body schemas.UserLoginRequest true "Login payload"
+// @Success 200 {object} schemas.LoginRegisterResponse
+// @Failure 400 {object} schemas.ErrorResponse
+// @Failure 401 {object} schemas.ErrorResponse
+// @Failure 403 {object} schemas.ErrorResponse
+// @Router /api/v1/users/login [post]
 func UserApiLoginHandler(c *fiber.Ctx) error {
     var payload *schemas.UserLoginRequest
 
@@ -116,6 +141,18 @@ func UserApiLoginHandler(c *fiber.Ctx) error {
 
 }
 
+// UserApiVerifyAccountHandler verifies a user account via uid and token.
+// @Summary Verify account
+// @Description Verifies a user's email using verification token.
+// @Tags users
+// @Produce json
+// @Param uid path string true "User UUID"
+// @Param token path string true "Verification token UUID"
+// @Success 200 {object} schemas.MessageResponse
+// @Failure 403 {object} schemas.ErrorResponse
+// @Failure 404 {object} schemas.ErrorResponse
+// @Failure 500 {object} schemas.ErrorResponse
+// @Router /api/v1/users/verify-account/{uid}/{token} [get]
 func UserApiVerifyAccountHandler(c *fiber.Ctx) error {
 
     uid := c.Params("uid")
@@ -151,6 +188,19 @@ func UserApiVerifyAccountHandler(c *fiber.Ctx) error {
     })
 }
 
+// UserApiResetPasswordHandler resets a user's password.
+// @Summary Reset password
+// @Description Resets password using user id and password reset token.
+// @Tags users
+// @Accept json
+// @Produce json
+// @Param payload body schemas.UserPasswordResetRequest true "Password reset payload"
+// @Success 200 {object} schemas.MessageResponse
+// @Failure 400 {object} schemas.ErrorResponse
+// @Failure 403 {object} schemas.ErrorResponse
+// @Failure 404 {object} schemas.ErrorResponse
+// @Failure 500 {object} schemas.ErrorResponse
+// @Router /api/v1/users/reset-password/ [patch]
 func UserApiResetPasswordHandler(c *fiber.Ctx) error {
 
     var req *schemas.UserPasswordResetRequest
